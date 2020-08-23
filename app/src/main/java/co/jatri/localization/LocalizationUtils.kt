@@ -9,7 +9,7 @@ import android.os.LocaleList
 import java.util.*
 
 
-class ContextUtils(base: Context?) : ContextWrapper(base) {
+class LocalizationUtils(base: Context?) : ContextWrapper(base) {
 
     companion object {
         fun updateLocale(context: Context, localeToSwitchTo: Locale?,lang: String): ContextWrapper {
@@ -39,7 +39,7 @@ class ContextUtils(base: Context?) : ContextWrapper(base) {
             editor.putString("My_Lang", lang)
             editor.apply()
 
-            return ContextUtils(context)
+            return LocalizationUtils(context)
         }
     }
 }

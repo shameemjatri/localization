@@ -1,6 +1,5 @@
 package co.jatri.localization
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -25,13 +24,13 @@ class MainActivity : AppCompatActivity() {
 
         btnBangla.setOnClickListener(View.OnClickListener {
             val localeToSwitchTo = Locale("bn")
-            ContextUtils.updateLocale(this, localeToSwitchTo,"bn")
+            LocalizationUtils.updateLocale(this, localeToSwitchTo,"bn")
             textView.text=this.resources.getString(R.string.hello)
         })
 
         btnEnglish.setOnClickListener(View.OnClickListener {
             val localeToSwitchTo = Locale("en")
-            ContextUtils.updateLocale(this, localeToSwitchTo,"en")
+            LocalizationUtils.updateLocale(this, localeToSwitchTo,"en")
             textView.text=this.resources.getString(R.string.hello)
         })
     }
@@ -41,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         val language = sharedPreferences.getString("My_Lang", "")
         if (language != null) {
             val localeLang = Locale(language)
-            ContextUtils.updateLocale(this, localeLang,language)
+            LocalizationUtils.updateLocale(this, localeLang,language)
         }
     }
 
