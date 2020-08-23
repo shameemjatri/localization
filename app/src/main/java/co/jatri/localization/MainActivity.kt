@@ -12,7 +12,6 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
-    private val sharedPrefFile = "kotlinsharedpreference"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,27 +20,13 @@ class MainActivity : AppCompatActivity() {
         val btnView = findViewById<Button>(R.id.button_language_switch)
         val textView = findViewById<TextView>(R.id.text_view_hello)
         textView.text=this.resources.getString(R.string.hello)
+        btnView.text=this.resources.getString(R.string.switch_language)
 
 
         btnView.setOnClickListener(View.OnClickListener {
-            val sharedPreferences: SharedPreferences = this.getSharedPreferences(sharedPrefFile,Context.MODE_PRIVATE)
-            val editor:SharedPreferences.Editor =  sharedPreferences.edit()
 
-            val language = sharedPreferences.getString("language","en")
-            if(language=="en"){
-                val localeToSwitchTo = Locale("en")
-                ContextUtils.updateLocale(this, localeToSwitchTo)
-                editor.putString("language","en")
-            }else{
-                val localeToSwitchTo = Locale("bn")
-                ContextUtils.updateLocale(this, localeToSwitchTo)
-                editor.putString("language","bn")
-            }
-
-
-            editor.apply()
-            editor.commit()
-
+            val localeToSwitchTo = Locale("bn")
+            ContextUtils.updateLocale(this, localeToSwitchTo)
             textView.text=this.resources.getString(R.string.hello)
             btnView.text=this.resources.getString(R.string.switch_language)
         })
@@ -50,28 +35,11 @@ class MainActivity : AppCompatActivity() {
 
 
     override fun attachBaseContext(newBase: Context?) {
-        try {
-            val sharedPreferences: SharedPreferences = this.getSharedPreferences(sharedPrefFile,Context.MODE_PRIVATE)
-            val language = sharedPreferences.getString("language","en")
-            if(language=="en"){
-                val localeToSwitchTo = Locale("en")
-                val localeUpdatedContext =
-                    ContextUtils.updateLocale(newBase!!, localeToSwitchTo)
-                super.attachBaseContext(localeUpdatedContext)
-            }else{
-                val localeToSwitchTo = Locale("bn")
-                val localeUpdatedContext =
-                    ContextUtils.updateLocale(newBase!!, localeToSwitchTo)
-                super.attachBaseContext(localeUpdatedContext)
-            }
-        }catch (e: Exception){
-            val localeToSwitchTo = Locale("en")
-            val localeUpdatedContext =
-                ContextUtils.updateLocale(newBase!!, localeToSwitchTo)
-            super.attachBaseContext(localeUpdatedContext)
-        }
 
-
+        val localeToSwitchTo = Locale("en")
+        val localeUpdatedContext =
+            ContextUtils.updateLocale(newBase!!, localeToSwitchTo)
+        super.attachBaseContext(localeUpdatedContext)
 
     }
 
