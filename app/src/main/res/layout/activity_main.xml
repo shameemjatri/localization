@@ -16,16 +16,27 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button_language_switch"
+        android:id="@+id/button_bangla"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="@string/switch_language"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/bangla"
+        app:layout_constraintEnd_toStartOf="@+id/button_english"
         app:layout_constraintStart_toStartOf="parent"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_view_hello"
         />
+
+    <Button
+        android:id="@+id/button_english"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/english"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="@+id/button_bangla"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button_bangla"
+        app:layout_constraintTop_toTopOf="@+id/button_bangla" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

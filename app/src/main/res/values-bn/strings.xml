@@ -2,4 +2,6 @@
     <string name="app_name">Localization</string>
     <string name="hello">আমার শোনার বাংলা</string>
     <string name="switch_language">ভাষা পরিবর্তন করুন</string>
+    <string name="bangla">Bangla</string>
+    <string name="english">English</string>
 </resources>

@@ -16,31 +16,27 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val btnView = findViewById<Button>(R.id.button_language_switch)
+        val btnBangla = findViewById<Button>(R.id.button_bangla)
+        val btnEnglish = findViewById<Button>(R.id.button_english)
         val textView = findViewById<TextView>(R.id.text_view_hello)
         textView.text=this.resources.getString(R.string.hello)
-        btnView.text=this.resources.getString(R.string.switch_language)
 
 
-        btnView.setOnClickListener(View.OnClickListener {
 
+        btnBangla.setOnClickListener(View.OnClickListener {
             val localeToSwitchTo = Locale("bn")
             ContextUtils.updateLocale(this, localeToSwitchTo)
             textView.text=this.resources.getString(R.string.hello)
-            btnView.text=this.resources.getString(R.string.switch_language)
+        })
+
+        btnEnglish.setOnClickListener(View.OnClickListener {
+            val localeToSwitchTo = Locale("en")
+            ContextUtils.updateLocale(this, localeToSwitchTo)
+            textView.text=this.resources.getString(R.string.hello)
         })
     }
 
 
-
-    override fun attachBaseContext(newBase: Context?) {
-
-        val localeToSwitchTo = Locale("en")
-        val localeUpdatedContext =
-            ContextUtils.updateLocale(newBase!!, localeToSwitchTo)
-        super.attachBaseContext(localeUpdatedContext)
-
-    }
 
 
 }
