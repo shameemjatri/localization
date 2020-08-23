@@ -11,7 +11,7 @@ import java.util.*
 
 class ContextUtils(base: Context?) : ContextWrapper(base) {
     companion object {
-        fun updateLocale(context: Context, localeToSwitchTo: Locale?): ContextWrapper {
+        fun updateLocale(context: Context, localeToSwitchTo: Locale?,lang: String): ContextWrapper {
             var context: Context = context
             val resources: Resources = context.getResources()
             val configuration: Configuration = resources.getConfiguration()
@@ -28,6 +28,13 @@ class ContextUtils(base: Context?) : ContextWrapper(base) {
             } else {
                 resources.updateConfiguration(configuration, resources.getDisplayMetrics())
             }
+
+
+
+            val editor = context.getSharedPreferences("Settings", Context.MODE_PRIVATE).edit()
+            editor.putString("My_Lang", lang)
+            editor.apply()
+
             return ContextUtils(context)
         }
     }

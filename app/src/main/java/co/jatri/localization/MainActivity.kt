@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        loadLocate()
         val btnBangla = findViewById<Button>(R.id.button_bangla)
         val btnEnglish = findViewById<Button>(R.id.button_english)
         val textView = findViewById<TextView>(R.id.text_view_hello)
@@ -25,18 +25,25 @@ class MainActivity : AppCompatActivity() {
 
         btnBangla.setOnClickListener(View.OnClickListener {
             val localeToSwitchTo = Locale("bn")
-            ContextUtils.updateLocale(this, localeToSwitchTo)
+            ContextUtils.updateLocale(this, localeToSwitchTo,"bn")
             textView.text=this.resources.getString(R.string.hello)
         })
 
         btnEnglish.setOnClickListener(View.OnClickListener {
             val localeToSwitchTo = Locale("en")
-            ContextUtils.updateLocale(this, localeToSwitchTo)
+            ContextUtils.updateLocale(this, localeToSwitchTo,"en")
             textView.text=this.resources.getString(R.string.hello)
         })
     }
 
-
+    private fun loadLocate() {
+        val sharedPreferences = getSharedPreferences("Settings", AppCompatActivity.MODE_PRIVATE)
+        val language = sharedPreferences.getString("My_Lang", "")
+        val localeLang = Locale(language)
+        if (language != null) {
+            ContextUtils.updateLocale(this, localeLang,language)
+        }
+    }
 
 
 }
