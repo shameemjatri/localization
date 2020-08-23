@@ -10,6 +10,7 @@ import java.util.*
 
 
 class ContextUtils(base: Context?) : ContextWrapper(base) {
+
     companion object {
         fun updateLocale(context: Context, localeToSwitchTo: Locale?,lang: String): ContextWrapper {
             var context: Context = context
@@ -20,12 +21,15 @@ class ContextUtils(base: Context?) : ContextWrapper(base) {
                 LocaleList.setDefault(localeList)
                 configuration.setLocales(localeList)
             } else {
+
+                @Suppress("DEPRECATION")
                 configuration.locale = localeToSwitchTo
             }
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1) {
                 context = context.createConfigurationContext(configuration)
             } else {
+                @Suppress("DEPRECATION")
                 resources.updateConfiguration(configuration, resources.getDisplayMetrics())
             }
 

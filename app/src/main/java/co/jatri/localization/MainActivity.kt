@@ -39,8 +39,8 @@ class MainActivity : AppCompatActivity() {
     private fun loadLocate() {
         val sharedPreferences = getSharedPreferences("Settings", AppCompatActivity.MODE_PRIVATE)
         val language = sharedPreferences.getString("My_Lang", "")
-        val localeLang = Locale(language)
         if (language != null) {
+            val localeLang = Locale(language)
             ContextUtils.updateLocale(this, localeLang,language)
         }
     }
