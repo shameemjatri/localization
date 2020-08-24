@@ -1,26 +1,22 @@
-package co.jatri.localization
+package co.jatri.Localization
 
+import AppCompatActivityBase
 import android.os.Bundle
-import com.ninenox.demokotlinlocalemanager.R
-import com.ninenox.kotlinlocalemanager.AppCompatActivityBase
-import kotlinx.android.synthetic.main.activity_main.*
-
+import android.widget.Button
 
 class MainActivity : AppCompatActivityBase() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        bn_button.setOnClickListener {
+        val banglaButton : Button =findViewById(R.id.bn_button)
+        val enButton : Button =findViewById(R.id.en_button)
+        banglaButton.setOnClickListener {
             setNewLocale("bn")
         }
 
-        en_button.setOnClickListener {
+        enButton.setOnClickListener {
             setNewLocale("en")
         }
-
     }
-
-
 }

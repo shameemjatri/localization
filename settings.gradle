@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name='DemoKotlinLocaleManager'
+rootProject.name = "My Application"

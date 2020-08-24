@@ -1,4 +1,4 @@
-package com.ninenox.demokotlinlocalemanager
+package co.jatri.Localization
 
 import org.junit.Test
 
