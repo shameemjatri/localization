@@ -2,5 +2,4 @@
 <resources>
     <string name="app_name">Localization</string>
     <string name="hello_world">ওহে বিশ্ব!</string>
-    <string name="hello_blank_fragment">হ্যালো ফাঁকা খণ্ড</string>
 </resources>
