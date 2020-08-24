@@ -1,47 +1,25 @@
 package co.jatri.localization
 
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
-import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
-import java.util.*
+import com.ninenox.demokotlinlocalemanager.R
+import com.ninenox.kotlinlocalemanager.AppCompatActivityBase
+import kotlinx.android.synthetic.main.activity_main.*
 
 
-class MainActivity : AppCompatActivity() {
-
+class MainActivity : AppCompatActivityBase() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        loadLocate()
-        val btnBangla = findViewById<Button>(R.id.button_bangla)
-        val btnEnglish = findViewById<Button>(R.id.button_english)
-        val textView = findViewById<TextView>(R.id.text_view_hello)
-        textView.text=this.resources.getString(R.string.hello)
 
-
-
-        btnBangla.setOnClickListener(View.OnClickListener {
-            val localeToSwitchTo = Locale("bn")
-            LocalizationUtils.updateLocale(this, localeToSwitchTo,"bn")
-            textView.text=this.resources.getString(R.string.hello)
-        })
-
-        btnEnglish.setOnClickListener(View.OnClickListener {
-            val localeToSwitchTo = Locale("en")
-            LocalizationUtils.updateLocale(this, localeToSwitchTo,"en")
-            textView.text=this.resources.getString(R.string.hello)
-        })
-    }
-
-    private fun loadLocate() {
-        val sharedPreferences = getSharedPreferences("Settings", AppCompatActivity.MODE_PRIVATE)
-        val language = sharedPreferences.getString("My_Lang", "")
-        if (language != null) {
-            val localeLang = Locale(language)
-            LocalizationUtils.updateLocale(this, localeLang,language)
+        bn_button.setOnClickListener {
+            setNewLocale("bn")
         }
+
+        en_button.setOnClickListener {
+            setNewLocale("en")
+        }
+
     }
 
 
